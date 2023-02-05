@@ -1,0 +1,7 @@
+Dockerfile
+.dockerignore
+*.md
+*.iso
+.git
+logs/
+
