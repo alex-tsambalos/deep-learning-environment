@@ -8,8 +8,17 @@ services:
       dockerfile: Dockerfile
       target: runtime
     env_file: .env
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: "nvidia"
+            device_ids: ["0"]
+            capabilities: [gpu]
+    ports:
+      - 8888:8888
     volumes:
-      - ./data/:/usr/src/tf-env/data
+      - ./data/:/data
       - ./logs:/usr/src/tf-env/logs
     networks:
       - internal-net
